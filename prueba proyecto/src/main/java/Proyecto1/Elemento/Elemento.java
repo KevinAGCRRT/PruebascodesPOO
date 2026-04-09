@@ -8,6 +8,15 @@ public abstract class Elemento {
     String descripcion;
     Prioridad prioridad;
 
+    public Elemento() {
+    }
+
+    public Elemento(String titulo, String descripcion, Prioridad prioridad) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.prioridad = prioridad;
+    }
+
     public String getTitulo() {
         return titulo;
     }

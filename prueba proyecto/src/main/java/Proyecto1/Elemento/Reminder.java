@@ -1,11 +1,14 @@
 package Proyecto1.Elemento;
+
 import java.time.LocalDate;
+
 import Proyecto1.enums.Prioridad;
 
-public class Reminder extends Elemento {
+public class Reminder extends Proyecto1.Elemento.Elemento {
     LocalDate fecha;
     String icono;
-    public Reminder (String titulo, String descripcion, LocalDate fecha, String icono, Prioridad prrioridad){
+
+    public Reminder(String titulo, String descripcion, LocalDate fecha, String icono, Prioridad prrioridad) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.fecha = fecha;
@@ -29,4 +32,6 @@ public class Reminder extends Elemento {
     public void setIcono(String icono) {
         this.icono = icono;
     }
+
+
 }

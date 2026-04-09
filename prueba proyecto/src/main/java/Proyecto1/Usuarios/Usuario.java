@@ -14,6 +14,16 @@ String nombre;
 String email;
 String clave;
 
+    public Usuario() {
+    }
+
+    public Usuario(int id, String nombre, String email, String clave) {
+        this.id = id;
+        this.nombre = nombre;
+        this.email = email;
+        this.clave = clave;
+    }
+
     public int getId() {
         return id;
     }
