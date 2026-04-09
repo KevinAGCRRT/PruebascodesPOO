@@ -3,12 +3,13 @@ package Proyecto1.Usuarios;
 
 import Proyecto1.Elemento.Reminder;
 import Proyecto1.Elemento.Tarea;
+import Proyecto1.Interface.Autenticable;
 import Proyecto1.enums.Prioridad;
 import Proyecto1.enums.Progreso;
 
 import java.time.LocalDate;
 
-public abstract class Usuario {
+public abstract class Usuario implements Autenticable {
  private int id;
  private String nombre;
  private String email;
@@ -68,7 +69,10 @@ public abstract class Usuario {
 
     public abstract void MostrarInfo();
 
-
+    @Override
+    public boolean autenticar(String usuario, String clave) {
+        return true;
+    }
 }
 
 

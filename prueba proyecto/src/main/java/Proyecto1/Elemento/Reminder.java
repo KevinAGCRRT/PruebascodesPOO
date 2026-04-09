@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 import Proyecto1.enums.Prioridad;
 
-public class Reminder extends Proyecto1.Elemento.Elemento {
+public class Reminder extends Elemento {
     @Override
     public void MostrarInfo () {
         System.out.println("Titulo del Reminder: " + getTitulo());

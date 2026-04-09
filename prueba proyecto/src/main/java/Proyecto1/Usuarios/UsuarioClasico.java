@@ -7,12 +7,12 @@ import Proyecto1.enums.Progreso;
 import java.security.PrivateKey;
 import java.time.LocalDate;
 
-public class UsuarioClasico extends Usuario{
+public class UsuarioClasico extends Usuario {
 
     @Override
 
     public void MostrarInfo () {
-        System.out.println("Id del usuario: " + getId());
+        System.out.println("\nId del usuario: " + getId());
         System.out.println("Nombre del usuario: " + getNombre());
         System.out.println("Gmail del usuario: " + getEmail());
         System.out.println("Tareas activas del Usuario: " + getTareasActivas());
@@ -37,8 +37,13 @@ public class UsuarioClasico extends Usuario{
 
             return null;
         }
-        reminderActivos ++;
-        return new Reminder(titulo, descripcion, fecha, icono, prioridad);
+        Reminder nuevo = new Reminder(titulo, descripcion, fecha, icono, prioridad);
+
+        reminder[ContadorReminder] = nuevo;
+        ContadorReminder++;
+        reminderActivos++;
+
+        return nuevo;
     }
 
 
@@ -105,7 +110,7 @@ public class UsuarioClasico extends Usuario{
     }
 
     private boolean verificarReminders(){
-        if (ContadorReminder >= getLimiteTareas()){
+        if (ContadorReminder >= limiteReminder ){
             System.out.println("Llegaste al limite de Reminders activos, Reminders activos al momento: "+ reminderActivos);
             for (int i = 5; i > 0; i++){
                 ContadorReminder ++;
@@ -120,19 +125,42 @@ public class UsuarioClasico extends Usuario{
     }
 
     private void Info (){
-        System.out.println("Titulo de la tarea"+ getId());
-        System.out.println("Titulo de la tarea"+ getNombre());
-        System.out.println("Titulo de la tarea"+ getTareasActivas());
+        System.out.println("Id de usuario"+ getId());
+        System.out.println("Nombre de usuario"+ getNombre());
+        System.out.println("Tareas activas del usuario"+ getTareasActivas());
         System.out.println("Titulo de la tarea"+ getLimiteTareas());
 
     }
     public void mostrarTareas() {
-        System.out.println("----- LISTA DE TAREAS -----");
+        System.out.println("\n----- LISTA DE TAREAS -----");
 
         for (int i = 0; i < ContadorTareas; i++) {
             System.out.println("Tarea " + (i + 1));
             tareas[i].MostrarInfo();
             System.out.println("-------------------------");
         }
+    }
+    public void mostrarRemainder() {
+        System.out.println("\n----- LISTA DE REMAINDERS -----");
+
+        for (int i = 0; i < ContadorReminder; i++) {
+            if (reminder[i] != null){
+                System.out.println("Remainder " + (i + 1));
+                reminder[i].MostrarInfo();
+                System.out.println("-------------------------");}
+        }
+    }
+
+
+    @Override
+    public boolean autenticar(String usuario, String clave) {
+        if (getEmail().equals(usuario) && getClave().equals(clave)) {
+            System.out.println("Inicio de sesión correcto");
+            return true;
+        } else {
+            System.out.println("Usuario o clave incorrectos");
+            return false;
+        }
+
     }
 }
