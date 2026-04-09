@@ -9,19 +9,16 @@ import Proyecto1.enums.Progreso;
 import java.time.LocalDate;
 
 public abstract class Usuario {
-int id;
-String nombre;
-String email;
-String clave;
+ int id;
+ String nombre;
+ String email;
+ String clave;
 
     public Usuario() {
     }
 
     public Usuario(int id, String nombre, String email, String clave) {
-        this.id = id;
-        this.nombre = nombre;
-        this.email = email;
-        this.clave = clave;
+
     }
 
     public int getId() {
