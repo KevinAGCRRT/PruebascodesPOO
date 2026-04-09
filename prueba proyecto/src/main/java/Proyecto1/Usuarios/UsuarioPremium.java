@@ -7,6 +7,11 @@ import Proyecto1.enums.Progreso;
 
 import java.time.LocalDate;
 public class UsuarioPremium extends Usuario{
+    public void MostrarInfo () {
+        System.out.println("Titulo de la tarea" + getId());
+        System.out.println("Titulo de la tarea" + getNombre());
+        System.out.println("Titulo de la tarea" + getEmail());
+    }
 @Override
 public Tarea crear_tareas (){
     return new Tarea("Hacer proyecto","tarabja", Prioridad.Alta, Progreso.En_proceso);

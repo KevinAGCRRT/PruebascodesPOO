@@ -9,6 +9,13 @@ import java.time.LocalDate;
 
 public class UsuarioClasico extends Usuario{
     @Override
+    public void MostrarInfo () {
+        System.out.println("Id del usuario: " + getId());
+        System.out.println("Nombre del usuario: " + getNombre());
+        System.out.println("Gmail del usuario: " + getEmail());
+        System.out.println("Tareas activas del Usuario: " + getTareasActivas());
+        System.out.println("Limite de Tareas: " + getLimiteTareas());
+    }
     public Tarea crear_tareas (){
         return new Tarea("Hacer proyecto","tarabja",Prioridad.Alta, Progreso.En_proceso);
     }
@@ -85,4 +92,13 @@ public class UsuarioClasico extends Usuario{
             tareasActivas--;
         }
     }
+
+    private void Info (){
+        System.out.println("Titulo de la tarea"+ getId());
+        System.out.println("Titulo de la tarea"+ getNombre());
+        System.out.println("Titulo de la tarea"+ getTareasActivas());
+        System.out.println("Titulo de la tarea"+ getLimiteTareas());
+
+    }
+
 }

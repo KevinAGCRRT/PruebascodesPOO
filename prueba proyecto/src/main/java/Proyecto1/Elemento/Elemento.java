@@ -4,12 +4,11 @@ import Proyecto1.enums.Prioridad;
 import java.awt.print.Printable;
 
 public abstract class Elemento {
+
     String titulo;
     String descripcion;
     Prioridad prioridad;
 
-    public Elemento() {
-    }
 
     public Elemento(String titulo, String descripcion, Prioridad prioridad) {
         this.titulo = titulo;
@@ -41,10 +40,6 @@ public abstract class Elemento {
         this.prioridad = prioridad;
     }
 
-    public void Mostrarinfo (){
-        System.out.println("Titulo: "+titulo);
-        System.out.println("Descripcion: "+descripcion);
-        System.out.println("Prioridad: "+prioridad);
+    public abstract void MostrarInfo();
 
-    }
 }

@@ -66,7 +66,7 @@ String clave;
 }
     public abstract Reminder crear_reminder();
 
-
+    public abstract void MostrarInfo();
 
 
 }

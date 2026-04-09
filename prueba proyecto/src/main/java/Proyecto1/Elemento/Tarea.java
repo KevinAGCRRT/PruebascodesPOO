@@ -3,6 +3,13 @@ import Proyecto1.enums.Prioridad;
 import Proyecto1.enums.Progreso;
 
 public class Tarea extends Elemento {
+    @Override
+    public void MostrarInfo () {
+        System.out.println("Titulo de la tarea: " + getTitulo());
+        System.out.println("Descripcion de la tarea:  " + getDescripcion());
+        System.out.println("Prioridad de la tarea: " + getPrioridad());
+        System.out.println("Estado de la tarea: " + getEstado());
+    }
     private Prioridad priority;
     private Progreso estado;
 
@@ -33,5 +40,8 @@ public class Tarea extends Elemento {
     public void cambiarEstadoq(Progreso nuevoEstado){
         this.estado = nuevoEstado;
     }
+
+
+
 }
 
