@@ -1,12 +1,23 @@
 package Proyecto1.Usuarios;
+import Proyecto1.Elemento.Reminder;
 import Proyecto1.Elemento.Tarea;
 import Proyecto1.enums.Prioridad;
 import Proyecto1.enums.Progreso;
 
 import java.security.PrivateKey;
+import java.time.LocalDate;
 
 public class UsuarioClasico extends Usuario{
-   private int limiteTareas;
+    @Override
+    public Tarea crear_tareas (){
+        return new Tarea("Hacer proyecto","tarabja",Prioridad.Alta, Progreso.En_proceso);
+    }
+    public Reminder crear_reminder(){
+        return new Reminder("Almorzar", "Comida saludable por favor", LocalDate.MAX,"pollos", Prioridad.Alta);
+    }
+
+
+    private int limiteTareas;
     private int tareasActivas;
     private Tarea [] tareas;
     private int Contador = 0;
@@ -43,7 +54,9 @@ public class UsuarioClasico extends Usuario{
         }
 
 
-        public boolean verificarTareas(){
+
+
+        private boolean verificarTareas(){
         if (Contador >= getLimiteTareas()){
             System.out.println("Llegaste al limite de tareas activas, Tareas activas al momento: "+ tareasActivas);
              for (int i = 5; i > 0; i++){
@@ -57,7 +70,7 @@ public class UsuarioClasico extends Usuario{
         return tareasActivas < limiteTareas;
         }
 
-    public Tarea crearTarea (String titulo, String descripcion, Prioridad prioridad, Progreso progreso){
+    private Tarea crearTarea (String titulo, String descripcion, Prioridad prioridad, Progreso progreso){
         if (!verificarTareas()){
             System.out.println("Ya no puedes crear mas tareas ");
 
@@ -67,7 +80,7 @@ public class UsuarioClasico extends Usuario{
         tareasActivas ++;
         return new Tarea(titulo,descripcion,prioridad, progreso);
     }
-    public void actualizarTareasActivas(Tarea tarea){
+   private void actualizarTareasActivas(Tarea tarea){
         if (tarea.getEstado() == Progreso.Finalizando) {
             tareasActivas--;
         }

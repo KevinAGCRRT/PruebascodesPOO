@@ -56,15 +56,15 @@ String clave;
         this.clave = clave;
     }
 
-    public Tarea CrearTarea(String titulo, String descripcion, Prioridad priority, Progreso progreso){
+    private Tarea CrearTarea(String titulo, String descripcion, Prioridad priority, Progreso progreso){
     return new Tarea(titulo, descripcion, priority,progreso);
-
 }
+    public abstract Tarea crear_tareas();
 
-public Reminder crearReminder(String titulo, String descripcion, LocalDate fecha, String icono, Prioridad prioridad){
+    private Reminder crearReminder(String titulo, String descripcion, LocalDate fecha, String icono, Prioridad prioridad){
     return new Reminder(titulo, descripcion, fecha, icono, prioridad);
 }
-
+    public abstract Reminder crear_reminder();
 
 
 

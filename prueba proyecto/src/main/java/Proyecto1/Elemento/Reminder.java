@@ -8,12 +8,13 @@ public class Reminder extends Proyecto1.Elemento.Elemento {
     LocalDate fecha;
     String icono;
 
-    public Reminder(String titulo, String descripcion, LocalDate fecha, String icono, Prioridad prrioridad) {
+    public Reminder(String titulo, String descripcion, LocalDate fecha, String icono, Prioridad prioridad) {
+        super (titulo, descripcion, prioridad);
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.fecha = fecha;
         this.icono = icono;
-        this.prioridad = prrioridad;
+        this.prioridad = prioridad;
 
     }
 
