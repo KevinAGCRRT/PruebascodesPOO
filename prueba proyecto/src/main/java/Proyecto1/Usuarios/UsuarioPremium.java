@@ -13,19 +13,16 @@ public class UsuarioPremium extends Usuario{
         System.out.println("Titulo de la tarea" + getEmail());
     }
 @Override
-public Tarea crear_tareas (){
-    return new Tarea("Hacer proyecto","tarabja", Prioridad.Alta, Progreso.En_proceso);
+public Tarea crearTarea (String titulo, String descripcion, Prioridad prioridad, Progreso progreso){
+        return new Tarea(titulo,descripcion,prioridad,progreso);
 }
-public Reminder crear_reminder(){
-    return new Reminder("Almorzar", "Comida saludable por favor", LocalDate.MAX,"pollos", Prioridad.Alta);
-}
-    public UsuarioPremium (int id, String nombre, String email, String clave){
-        super (id,nombre,email,clave);
-        this.id = id;
-        this.nombre = nombre;
-        this.email = email;
-        this.clave = clave;
+    public Reminder crearReminder (String titulo, String descripcion, LocalDate fecha, String icono, Prioridad prioridad){
+        return new Reminder(titulo, descripcion, fecha, icono, prioridad);
+    }
 
-
+    public UsuarioPremium(int id, String nombre, String email, String clave) {
+        super(id, nombre, email, clave);
     }
 }
+
+

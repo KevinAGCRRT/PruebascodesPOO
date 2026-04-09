@@ -9,16 +9,19 @@ import Proyecto1.enums.Progreso;
 import java.time.LocalDate;
 
 public abstract class Usuario {
- int id;
- String nombre;
- String email;
- String clave;
+ private int id;
+ private String nombre;
+ private String email;
+ private String clave;
 
     public Usuario() {
     }
 
     public Usuario(int id, String nombre, String email, String clave) {
-
+        this.id = id;
+        this.nombre = nombre;
+        this.email = email;
+        this.clave = clave;
     }
 
     public int getId() {
@@ -53,15 +56,15 @@ public abstract class Usuario {
         this.clave = clave;
     }
 
-    private Tarea CrearTarea(String titulo, String descripcion, Prioridad priority, Progreso progreso){
-    return new Tarea(titulo, descripcion, priority,progreso);
+    public Tarea CrearTarea(String titulo, String descripcion, Prioridad prioridad, Progreso progreso){
+    return new Tarea(titulo, descripcion, prioridad, progreso);
 }
-    public abstract Tarea crear_tareas();
+    public abstract Tarea crearTarea(String titulo, String descripcion, Prioridad prioridad, Progreso progreso);
 
-    private Reminder crearReminder(String titulo, String descripcion, LocalDate fecha, String icono, Prioridad prioridad){
+    private Reminder CrearReminder(String titulo, String descripcion, LocalDate fecha, String icono, Prioridad prioridad){
     return new Reminder(titulo, descripcion, fecha, icono, prioridad);
 }
-    public abstract Reminder crear_reminder();
+    public abstract  Reminder crearReminder(String titulo, String descripcion, LocalDate fecha, String icono, Prioridad prioridad);
 
     public abstract void MostrarInfo();
 

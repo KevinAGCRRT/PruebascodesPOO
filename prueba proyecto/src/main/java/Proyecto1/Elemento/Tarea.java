@@ -16,8 +16,6 @@ public class Tarea extends Elemento {
 
     public Tarea(String titulo, String descripcion, Prioridad prioridad, Progreso estado) {
         super (titulo, descripcion, prioridad);
-        this.titulo = titulo;
-        this.descripcion = descripcion;
         this.priority = prioridad;
         this.estado = estado;
     }

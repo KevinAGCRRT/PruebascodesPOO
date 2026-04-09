@@ -5,9 +5,9 @@ import java.awt.print.Printable;
 
 public abstract class Elemento {
 
-    String titulo;
-    String descripcion;
-    Prioridad prioridad;
+   private String titulo;
+    private String descripcion;
+    private Prioridad prioridad;
 
 
     public Elemento(String titulo, String descripcion, Prioridad prioridad) {

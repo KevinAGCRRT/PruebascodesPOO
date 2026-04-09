@@ -8,7 +8,9 @@ import java.security.PrivateKey;
 import java.time.LocalDate;
 
 public class UsuarioClasico extends Usuario{
+
     @Override
+
     public void MostrarInfo () {
         System.out.println("Id del usuario: " + getId());
         System.out.println("Nombre del usuario: " + getNombre());
@@ -16,32 +18,50 @@ public class UsuarioClasico extends Usuario{
         System.out.println("Tareas activas del Usuario: " + getTareasActivas());
         System.out.println("Limite de Tareas: " + getLimiteTareas());
     }
-    public Tarea crear_tareas (){
-        return new Tarea("Hacer proyecto","tarabja",Prioridad.Alta, Progreso.En_proceso);
+    public Tarea crearTarea (String titulo, String descripcion, Prioridad prioridad, Progreso progreso){
+        if (!verificarTareas()){
+            System.out.println("Ya no puedes crear mas tareas ");
+
+            return null;
     }
-    public Reminder crear_reminder(){
-        return new Reminder("Almorzar", "Comida saludable por favor", LocalDate.MAX,"pollos", Prioridad.Alta);
+        Tarea nueva = new Tarea(titulo,descripcion,prioridad, progreso);
+        tareas [ContadorTareas] = nueva;
+        tareasActivas ++;
+        ContadorTareas++;
+
+        return nueva;
+    }
+    public Reminder crearReminder (String titulo, String descripcion, LocalDate fecha, String icono, Prioridad prioridad){
+        if (!verificarReminders()){
+            System.out.println("Ya no puedes crear mas reminders ");
+
+            return null;
+        }
+        reminderActivos ++;
+        return new Reminder(titulo, descripcion, fecha, icono, prioridad);
     }
 
 
     private int limiteTareas;
     private int tareasActivas;
+    private int limiteReminder;
+    private int reminderActivos;
     private Tarea [] tareas;
-    private int Contador = 0;
+    private Reminder [] reminder;
+    private int ContadorTareas = 0;
+    private int ContadorReminder = 0;
 
 
-
-    public UsuarioClasico (int id, String nombre, String email, String clave, int limiteTareas, int tareasActivas){
-        super (id,nombre,email,clave);
-     this.id = id;
-     this.nombre = nombre;
-     this.email = email;
-     this.clave = clave;
-     this.limiteTareas = limiteTareas;
-     this.tareasActivas = tareasActivas;
-     this.Contador = 0;
+    public UsuarioClasico(int id, String nombre, String email, String clave) {
+        super(id, nombre, email, clave);
+        this.limiteTareas = 5;
+        this.tareasActivas = 0;
+        this.limiteReminder = 5;
+        this.reminderActivos = 0;
         this.tareas = new Tarea[limiteTareas];
-
+        this.reminder = new Reminder[limiteReminder];
+        this.ContadorTareas = 0;
+        this.ContadorReminder = 0;
     }
 
     public int getLimiteTareas() {
@@ -64,11 +84,12 @@ public class UsuarioClasico extends Usuario{
 
 
         private boolean verificarTareas(){
-        if (Contador >= getLimiteTareas()){
+        if (ContadorTareas >= getLimiteTareas()){
             System.out.println("Llegaste al limite de tareas activas, Tareas activas al momento: "+ tareasActivas);
              for (int i = 5; i > 0; i++){
-                 Contador ++;
-                 System.out.println("El numero de tareas activas hasta el momento es: "+ Contador);
+                 ContadorTareas ++;
+                 System.out.println("El numero de tareas activas hasta el momento es: "+ ContadorTareas);
+                 return false;
              }
         }
         else  {
@@ -77,20 +98,25 @@ public class UsuarioClasico extends Usuario{
         return tareasActivas < limiteTareas;
         }
 
-    private Tarea crearTarea (String titulo, String descripcion, Prioridad prioridad, Progreso progreso){
-        if (!verificarTareas()){
-            System.out.println("Ya no puedes crear mas tareas ");
-
-            return null;
-        }
-
-        tareasActivas ++;
-        return new Tarea(titulo,descripcion,prioridad, progreso);
-    }
    private void actualizarTareasActivas(Tarea tarea){
         if (tarea.getEstado() == Progreso.Finalizando) {
             tareasActivas--;
         }
+    }
+
+    private boolean verificarReminders(){
+        if (ContadorReminder >= getLimiteTareas()){
+            System.out.println("Llegaste al limite de Reminders activos, Reminders activos al momento: "+ reminderActivos);
+            for (int i = 5; i > 0; i++){
+                ContadorReminder ++;
+                System.out.println("El numero de Reminders activos hasta el momento son: "+ reminderActivos);
+                return false;
+            }
+        }
+        else  {
+            System.out.println("Aun puedes crear Reminders, tus Reminders activos son: "+ reminderActivos + " Recuerda que tu limite de tareas es: " + limiteTareas);
+        }
+        return reminderActivos < limiteReminder;
     }
 
     private void Info (){
@@ -100,5 +126,13 @@ public class UsuarioClasico extends Usuario{
         System.out.println("Titulo de la tarea"+ getLimiteTareas());
 
     }
+    public void mostrarTareas() {
+        System.out.println("----- LISTA DE TAREAS -----");
 
+        for (int i = 0; i < ContadorTareas; i++) {
+            System.out.println("Tarea " + (i + 1));
+            tareas[i].MostrarInfo();
+            System.out.println("-------------------------");
+        }
+    }
 }
