@@ -12,7 +12,7 @@ public class UsuarioClasico extends Usuario {
     @Override
 
     public void MostrarInfo () {
-        System.out.println("Id del usuario: " + getId());
+        System.out.println("\nId del usuario: " + getId());
         System.out.println("Nombre del usuario: " + getNombre());
         System.out.println("Gmail del usuario: " + getEmail());
         System.out.println("Tareas activas del Usuario: " + getTareasActivas());
@@ -37,8 +37,13 @@ public class UsuarioClasico extends Usuario {
 
             return null;
         }
-        reminderActivos ++;
-        return new Reminder(titulo, descripcion, fecha, icono, prioridad);
+        Reminder nuevo = new Reminder(titulo, descripcion, fecha, icono, prioridad);
+
+        reminder[ContadorReminder] = nuevo;
+        ContadorReminder++;
+        reminderActivos++;
+
+        return nuevo;
     }
 
 
@@ -105,7 +110,7 @@ public class UsuarioClasico extends Usuario {
     }
 
     private boolean verificarReminders(){
-        if (ContadorReminder >= getLimiteTareas()){
+        if (ContadorReminder >= limiteReminder ){
             System.out.println("Llegaste al limite de Reminders activos, Reminders activos al momento: "+ reminderActivos);
             for (int i = 5; i > 0; i++){
                 ContadorReminder ++;
@@ -127,7 +132,7 @@ public class UsuarioClasico extends Usuario {
 
     }
     public void mostrarTareas() {
-        System.out.println("----- LISTA DE TAREAS -----");
+        System.out.println("\n----- LISTA DE TAREAS -----");
 
         for (int i = 0; i < ContadorTareas; i++) {
             System.out.println("Tarea " + (i + 1));
@@ -140,7 +145,7 @@ public class UsuarioClasico extends Usuario {
 
         for (int i = 0; i < ContadorReminder; i++) {
             if (reminder[i] != null){
-                System.out.println("\nRemainder " + (i + 1));
+                System.out.println("Remainder " + (i + 1));
                 reminder[i].MostrarInfo();
                 System.out.println("-------------------------");}
         }

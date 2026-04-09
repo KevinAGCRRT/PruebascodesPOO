@@ -75,7 +75,7 @@ public class UsuarioPremium extends Usuario {
 
         for (int i = 0; i < ContadorReminder; i++) {
             if (reminder[i] != null){
-                System.out.println("\nRemainder " + (i + 1));
+                System.out.println("Remainder " + (i + 1));
                 reminder[i].MostrarInfo();
                 System.out.println("-------------------------");}
         }
@@ -87,7 +87,7 @@ public class UsuarioPremium extends Usuario {
 
         for (int i = 0; i < ContadorTareas; i++) {
             if (tareas[i] != null){
-            System.out.println("\nTarea " + (i + 1));
+            System.out.println("Tarea " + (i + 1));
             tareas[i].MostrarInfo();
             System.out.println("-------------------------");}
         }
