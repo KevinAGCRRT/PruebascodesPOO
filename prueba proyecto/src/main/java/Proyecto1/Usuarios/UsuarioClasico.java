@@ -7,7 +7,7 @@ import Proyecto1.enums.Progreso;
 import java.security.PrivateKey;
 import java.time.LocalDate;
 
-public class UsuarioClasico extends Usuario{
+public class UsuarioClasico extends Usuario {
 
     @Override
 
@@ -120,9 +120,9 @@ public class UsuarioClasico extends Usuario{
     }
 
     private void Info (){
-        System.out.println("Titulo de la tarea"+ getId());
-        System.out.println("Titulo de la tarea"+ getNombre());
-        System.out.println("Titulo de la tarea"+ getTareasActivas());
+        System.out.println("Id de usuario"+ getId());
+        System.out.println("Nombre de usuario"+ getNombre());
+        System.out.println("Tareas activas del usuario"+ getTareasActivas());
         System.out.println("Titulo de la tarea"+ getLimiteTareas());
 
     }
@@ -134,5 +134,28 @@ public class UsuarioClasico extends Usuario{
             tareas[i].MostrarInfo();
             System.out.println("-------------------------");
         }
+    }
+    public void mostrarRemainder() {
+        System.out.println("\n----- LISTA DE REMAINDERS -----");
+
+        for (int i = 0; i < ContadorReminder; i++) {
+            if (reminder[i] != null){
+                System.out.println("\nRemainder " + (i + 1));
+                reminder[i].MostrarInfo();
+                System.out.println("-------------------------");}
+        }
+    }
+
+
+    @Override
+    public boolean autenticar(String usuario, String clave) {
+        if (getEmail().equals(usuario) && getClave().equals(clave)) {
+            System.out.println("Inicio de sesión correcto");
+            return true;
+        } else {
+            System.out.println("Usuario o clave incorrectos");
+            return false;
+        }
+
     }
 }
